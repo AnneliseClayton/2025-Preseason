@@ -29,6 +29,8 @@ public class RobotContainer {
     configureDefaultCommands();
   }
 
+  
+
   private void configureDefaultCommands() {
     intake.setDefaultCommand(intake.setSpeed(0));
     indexer.setDefaultCommand(indexer.setSpeed(0));
@@ -37,13 +39,17 @@ public class RobotContainer {
 
   private void configureOperatorBindings() {
     operatorController.rightBumper().whileTrue(intake.setSpeed(SubsystemSpeeds.INTAKE_SPEED));
-    operatorController.leftBumper().whileTrue(indexer.setSpeed(-SubsystemSpeeds.INTAKE_SPEED));
+  
+    operatorController.leftBumper().whileTrue(indexer.setSpeed(SubsystemSpeeds.INDEXER_FEED_SPEED));
+    operatorController.leftTrigger().whileTrue(indexer.setSpeed(-SubsystemSpeeds.INTAKE_SPEED));
     operatorController.rightTrigger().whileTrue(commandFactory.runIntakeAndIndexer());
 
     driverController.rightBumper().whileTrue(commandFactory.shootWhenUpToSpeed(SubsystemSpeeds.SHOOTER_SPEED));
     driverController.leftBumper().whileTrue(shooter.setShooterSpeed(SubsystemSpeeds.SHOOTER_SPEED));
-  }
 
+
+    operatorController.rightTrigger().whileTrue(commandFactory.runningIntakeAndIndexerAtTheSameTime());
+  }
   private void configureDriverBindings() {
 
   }

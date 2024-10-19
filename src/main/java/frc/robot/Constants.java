@@ -46,7 +46,7 @@ public final class Constants {
 
   public static class SubsystemSpeeds {
     public static final double INTAKE_SPEED = 1;
-    public static final double SHOOTER_SPEED = 0;
+    public static final double SHOOTER_SPEED = 1;
     public static final double INDEXER_FEED_SPEED = 0.3;
   }
 }

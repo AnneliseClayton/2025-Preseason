@@ -17,7 +17,7 @@ public class Indexer extends SubsystemBase {
 
         indexerMotor.restoreFactoryDefaults();
         indexerMotor.setInverted(false);
-        indexerMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
+        indexerMotor.setSmartCurrentLimit(MotorConstants.NEO550_CURRENT_LIMIT);
     }
 
     public Command setSpeed(double speed) {

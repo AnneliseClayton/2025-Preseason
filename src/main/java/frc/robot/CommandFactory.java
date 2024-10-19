@@ -28,4 +28,8 @@ public class CommandFactory {
                 Commands.either(indexer.setSpeed(SubsystemSpeeds.INDEXER_FEED_SPEED), indexer.setSpeed(0),
                         shooter.isShooterAtSpeed(speed)));
     }
+
+    public Command runningIntakeAndIndexerAtTheSameTime() {
+        return Commands.parallel(intake.setSpeed(SubsystemSpeeds.INDEXER_FEED_SPEED), indexer.setSpeed(SubsystemSpeeds.INDEXER_FEED_SPEED));
+    }
 }
