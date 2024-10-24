@@ -20,10 +20,10 @@ public class Shooter extends SubsystemBase {
         bottomMotor = new CANSparkMax(MotorIdConstants.SHOOTER_BOTTOM_MOTOR_ID, MotorType.kBrushless);
 
         topMotor.restoreFactoryDefaults();
-        topMotor.setInverted(false);
+        topMotor.setInverted(true);
         topMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
         bottomMotor.restoreFactoryDefaults();
-        bottomMotor.setInverted(false);
+        bottomMotor.setInverted(true);
         bottomMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
     }
 
