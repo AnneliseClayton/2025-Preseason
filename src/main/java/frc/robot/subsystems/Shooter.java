@@ -13,17 +13,17 @@ import frc.robot.Constants.MotorIdConstants;
 public class Shooter extends SubsystemBase {
 
     CANSparkMax topMotor;
-    CANSparkMax bottomMotor; 
+    CANSparkMax bottomMotor;
 
     public Shooter() {
         topMotor = new CANSparkMax(MotorIdConstants.SHOOTER_TOP_MOTOR_ID, MotorType.kBrushless);
-        bottomMotor = new CANSparkMax(MotorIdConstants.SHOOTER_BOTTOM_MOTOR_ID, MotorType.kBrushless); 
-    
+        bottomMotor = new CANSparkMax(MotorIdConstants.SHOOTER_BOTTOM_MOTOR_ID, MotorType.kBrushless);
+
         topMotor.restoreFactoryDefaults();
-        topMotor.setInverted(true);
+        topMotor.setInverted(false);
         topMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
         bottomMotor.restoreFactoryDefaults();
-        bottomMotor.setInverted(true);
+        bottomMotor.setInverted(false);
         bottomMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
     }
 
@@ -31,10 +31,10 @@ public class Shooter extends SubsystemBase {
         return this.run(() -> {
             topMotor.set(speed);
             bottomMotor.set(speed);
-    }); }
+        });
+    }
 
     public BooleanSupplier isShooterAtSpeed(double speed) {
         return () -> false;
     }
 }
-
