@@ -42,11 +42,12 @@ public final class Constants {
     public static final int NEO_CURRENT_LIMIT = 50;
     public static final double MINUTE_TO_SECOND_CONVERSION = 1 / 60.0;
     public static final double NEO_FREE_SPEED_RPM = 5676;
+    public static final double NEO_FREE_SPEED_RADIANS_PER_SECOND = 5676*2*Math.PI/60.0;
   }
 
   public static class SubsystemSpeeds {
     public static final double INTAKE_SPEED = 1;
-    public static final double SHOOTER_SPEED = 1;
+    public static final double SHOOTER_SPEED = 0.4;
     public static final double INDEXER_FEED_SPEED = 0.3;
   }
 }

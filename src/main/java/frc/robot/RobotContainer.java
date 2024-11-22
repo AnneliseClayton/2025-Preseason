@@ -45,7 +45,7 @@ public class RobotContainer {
     operatorController.rightTrigger().whileTrue(commandFactory.runIntakeAndIndexer());
 
     driverController.rightBumper().whileTrue(commandFactory.shootWhenUpToSpeed(SubsystemSpeeds.SHOOTER_SPEED));
-    driverController.leftBumper().whileTrue(shooter.setShooterSpeed(SubsystemSpeeds.SHOOTER_SPEED));
+    driverController.leftBumper().whileTrue(shooter.setShooterSpeedPID(SubsystemSpeeds.SHOOTER_SPEED));
 
 
     operatorController.rightTrigger().whileTrue(commandFactory.runningIntakeAndIndexerAtTheSameTime());
