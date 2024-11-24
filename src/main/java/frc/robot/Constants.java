@@ -43,6 +43,7 @@ public final class Constants {
     public static final double MINUTE_TO_SECOND_CONVERSION = 1 / 60.0;
     public static final double NEO_FREE_SPEED_RPM = 5676;
     public static final double NEO_FREE_SPEED_RADIANS_PER_SECOND = 5676*2*Math.PI/60.0;
+    public static final double SHOOTER_SPEED_TOLERANCE = 5;
   }
 
   public static class SubsystemSpeeds {

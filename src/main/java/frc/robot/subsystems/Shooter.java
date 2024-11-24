@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.MotorIdConstants;
+import frc.robot.Constants.SubsystemSpeeds;
 
 public class Shooter extends SubsystemBase {
 
@@ -62,18 +63,21 @@ public class Shooter extends SubsystemBase {
         return this.run(()->{
             shooterHighController.setReference(speed*MotorConstants.NEO_FREE_SPEED_RADIANS_PER_SECOND,ControlType.kVelocity);
             shooterLowController.setReference(speed*MotorConstants.NEO_FREE_SPEED_RADIANS_PER_SECOND,ControlType.kVelocity);
-            SmartDashboard.putNumber("top shooter reference speed",speed*MotorConstants.NEO_FREE_SPEED_RADIANS_PER_SECOND);
-            SmartDashboard.putNumber("bottom shooter reference speed",speed*MotorConstants.NEO_FREE_SPEED_RADIANS_PER_SECOND);
+            SmartDashboard.putNumber("shooter/top reference speed",speed*MotorConstants.NEO_FREE_SPEED_RADIANS_PER_SECOND);
+            SmartDashboard.putNumber("shooter/bottom reference speed",speed*MotorConstants.NEO_FREE_SPEED_RADIANS_PER_SECOND);
         });
     }
 
     public BooleanSupplier isShooterAtSpeed(double speed) {
-        return () -> false;
+        return () -> topMotorEncoder.getVelocity() < (speed*MotorConstants.NEO_FREE_SPEED_RADIANS_PER_SECOND+MotorConstants.SHOOTER_SPEED_TOLERANCE)
+        &&
+        topMotorEncoder.getVelocity() > (speed*MotorConstants.NEO_FREE_SPEED_RADIANS_PER_SECOND-MotorConstants.SHOOTER_SPEED_TOLERANCE);
     }
 
     @Override
     public void periodic(){
-        SmartDashboard.putNumber("top shooter actual speed",topMotorEncoder.getVelocity());
-        SmartDashboard.putNumber("bottom shooter actual speed",bottomMotorEncoder.getVelocity());
+        SmartDashboard.putNumber("shooter/top actual speed",topMotorEncoder.getVelocity());
+        SmartDashboard.putNumber("shooter/bottom actual speed",bottomMotorEncoder.getVelocity());
+        SmartDashboard.putBoolean("shooter/at speed", isShooterAtSpeed(SubsystemSpeeds.SHOOTER_SPEED).getAsBoolean());
     }
 }
